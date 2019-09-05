@@ -36,7 +36,29 @@ $(document).ready(function(){
 
     // Function that displays questions to user
     function askQuestions(){
-        $("#questions").html("<p>What is Pink City</p>");
+        // $("#questions").html("<p>What is Pink City</p>");
+        $("#quesBtn").removeClass('d-none');
+        $("#quesBtn").html("<button type= 'button' class='list-group-item list-group-item-action active' id='quesBtn'>"+
+        "Which city is known as Pink City"+
+      "</button>");
+      $("#ans1").removeClass('d-none');
+      $("#ans1").html("<button type='button' class='list-group-item list-group-item-action d-none' id='ans1'>"+
+      "Jaipur"+
+      "</button>");
+      $("#ans2").removeClass('d-none');
+      $("#ans2").html("<button type='button' class='list-group-item list-group-item-action d-none' id='ans2'>"+
+      "Kashmir"+
+      "</button>");
+      $("#ans3").removeClass('d-none');
+      $("#ans3").html("<button type='button' class='list-group-item list-group-item-action d-none' id='ans3'>"+
+      "Chennai"+
+      "</button>");
+      $("#ans4").removeClass('d-none');
+      $("#ans4").html("<button type='button' class='list-group-item list-group-item-action d-none' id='ans4'>"+
+      "Mumbai"+
+      "</button>");
+
+
         console.log("question1");
     }
 
