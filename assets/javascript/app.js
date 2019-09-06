@@ -8,11 +8,11 @@ var options = [["Jaipur","Kashmir","Chennai","Mumbai"],
                 ["Japan","Norway","India","Australia"],
                 ["Norway","Canada","Indonesia","Russia"]];
 var value;
-var i = 0;
-var j = 0;
-var score = 0;
-var correctAnswers = 0;
-var wrongAnswers = 0;
+var i;
+var j;
+var score;
+var correctAnswers;
+var wrongAnswers;
 
 $(document).ready(function(){
     // Game is started when Start button is pressed
@@ -21,7 +21,36 @@ $(document).ready(function(){
         startGame();
     });
 
+    function initializeVariables(){
+        i=0;
+        j=0;
+        score = 0;
+        correctAnswers = 0;
+        wrongAnswers = 0;
+        hideVariables();
+
+
+    }
+
+    function hideVariables(){
+        $("#score").hide();
+        $("#corrAns").hide();
+        $("#wrongAns").hide();
+        $("#gameOver").hide();
+        $("#restart").hide();
+    }
+
+    function showVariables(){
+        $("#score").show();
+        $("#corrAns").show();
+        $("#wrongAns").show();
+        $("#gameOver").show();
+        $("#restart").show();
+    }
+
     function startGame(){
+        initializeVariables();
+        hideVariables();
         $("#startBtn").hide();
         $("#getSetGo").hide();
         $("#cardBody1").hide();
@@ -57,6 +86,19 @@ $(document).ready(function(){
         $("#timeUp").show();
         $("#timeRemaining").html("<p>"+"Time Remaining : 0"+"</p>");
         $("#timeUp").append("<p>Time Up!</p>");
+        showCorrectAnswer();
+        ifAllQuestionsAsked();
+
+        // if((i+1) <= quesBank.length)
+        // {
+        // setTimeout(askQuestions,5000);
+        // setTimeout(run,5000);
+        // }
+        // else{
+        //     console.log("Game over");
+        //     gameOver();
+        // }
+
         clearInterval(intervalId);
         askQuestionsHide();
     }
@@ -71,7 +113,7 @@ $(document).ready(function(){
     function askQuestions(){
         // $("#questions").html("<p>What is Pink City</p>");
         // i=0;
-        
+        $("#timeUp").hide();
         $("#answer").hide();
         $("#quesBtn").show();
         $("#ans1").show();
@@ -146,19 +188,21 @@ $(document).ready(function(){
             correctAnswers++;
             i++;
             //Breaks the loop if all questions in array were asked
-            if((i+1) <= quesBank.length){
-            setTimeout(askQuestions,5000);
-            setTimeout(run,5000);
-        }
-            else{
-            console.log("Game over");
-            gameOver();
-            }
+            ifAllQuestionsAsked();
+        //     if((i+1) <= quesBank.length){
+        //     setTimeout(askQuestions,5000);
+        //     setTimeout(run,5000);
+        // }
+        //     else{
+        //     console.log("Game over");
+        //     gameOver();
+        //     }
         }
         else if(answer != ansBank[i]){
             $("#answer").html("<p>Oops! Wrong answer</p>");
             console.log("Prints i inside second if "+i);
-            $("#answer").append("<p>Correct answer is " +ansBank[i]+"</p>");
+            // $("#answer").append("<p>Correct answer is " +ansBank[i]+"</p>");
+            showCorrectAnswer();
             console.log("Prints i inside second if "+i);
             askQuestionsHide();
             stopTimer();
@@ -166,15 +210,16 @@ $(document).ready(function(){
             wrongAnswers = wrongAnswers + 1;
             i++;
             //Breaks the loop if all questions in array were asked
-            if((i+1) <= quesBank.length)
-            {
-            setTimeout(askQuestions,5000);
-            setTimeout(run,5000);
-            }
-            else{
-                console.log("Game over");
-                gameOver();
-            }
+            ifAllQuestionsAsked();
+            // if((i+1) <= quesBank.length)
+            // {
+            // setTimeout(askQuestions,5000);
+            // setTimeout(run,5000);
+            // }
+            // else{
+            //     console.log("Game over");
+            //     gameOver();
+            // }
 
         }
         else{
@@ -182,15 +227,31 @@ $(document).ready(function(){
         }
 
     }
+    function ifAllQuestionsAsked(){
+        if((i+1) <= quesBank.length)
+        {
+        setTimeout(askQuestions,5000);
+        setTimeout(run,5000);
+        }
+        else{
+            console.log("Game over");
+            gameOver();
+        }
+    }
+    function showCorrectAnswer(){
+        $("#answer").show();
+        $("#answer").append("<p>Correct answer is " +ansBank[i]+"</p>");
+    }
     // Function that calculates score
     function scoreCard(){
+        showVariables();
         $("#score").html("Your total score is : "+score);
         $("#corrAns").html("Number of correct answers : "+correctAnswers);
 
  }
  //Function that keeps track of wrong answers
  function calcWrongAnswers(){
-     
+     showVariables();
      $("#wrongAns").html("Number of wrong answers : "+wrongAnswers);
 
  }
@@ -212,6 +273,16 @@ $(document).ready(function(){
         scoreCard();
         calcWrongAnswers();
         allHide();
+        restartGame();
+    }
+    // Function to show button that allows user to restart the game
+    function restartGame(){
+        $("#restart").removeClass('d-none');
+        $("#restart").on("click",function(){
+
+            startGame();
+        });
+
     }
 
     
