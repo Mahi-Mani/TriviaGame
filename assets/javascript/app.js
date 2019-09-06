@@ -2,9 +2,14 @@
 var intervalId;
 var timeRemaining;
 var questions;
-var quesBank = ["Which city is known as Pink City"];
-var ansBank = ["Jaipur"];
+var quesBank = ["Which city is known as Pink City","Which country is called as The Land of rising Sun","The Land of midnight Sun"];
+var ansBank = ["Jaipur","Japan","Norway"];
+var options = [["Jaipur","Kashmir","Chennai","Mumbai"],
+                ["Japan","Norway","India","Australia"],
+                ["Norway","Canada","Indonesia","Russia"]];
 var value;
+var i = 0;
+var j = 0;
 
 $(document).ready(function(){
     // Game is started when Start button is pressed
@@ -15,8 +20,13 @@ $(document).ready(function(){
 
     function startGame(){
         $("#startBtn").hide();
+        $("#getSetGo").hide();
+        $("#cardBody1").hide();
+        $("#cardBody2").hide();
+        // for(i=0 ;i<quesBank.length;i++){
         setTimeout(askQuestions,1000);
         run();
+        // }
         // questions = setInterval(askQuestions, 10000);
         // run();
         
@@ -49,6 +59,9 @@ $(document).ready(function(){
     // Function that displays questions to user
     function askQuestions(){
         // $("#questions").html("<p>What is Pink City</p>");
+        // i=0;
+        if(i <= quesBank.length){
+        $("#answer").hide();
         $("#quesBtn").show();
         $("#ans1").show();
         $("#ans2").show();
@@ -56,62 +69,83 @@ $(document).ready(function(){
         $("#ans4").show();
         $("#quesBtn").removeClass('d-none');
         $("#quesBtn").html("<button type= 'button' class='list-group-item list-group-item-action active' id='quesBtn'>"+
-        "Which city is known as Pink City"+
-      "</button>");
+        quesBank[i]+"</button>");
       $("#ans1").removeClass('d-none');
-      $("#ans1").html("<button type='button' class='btn btn-secondary'id='ans1'value='Jaipur'>"+"Jaipur"+"</button>");
+      $("#ans1").html("<button type='button' class='btn btn-secondary'id='ans1'value='" + options[i][0] + "'>"+options[i][0]+"</button>");
       $("#ans2").removeClass('d-none');
-      $("#ans2").html("<button type='button' class='btn btn-secondary'id='ans2'>"+"Kashmir"+"</button>");
+      $("#ans2").html("<button type='button' class='btn btn-secondary'id='ans2'value='" + options[i][1] + "'>"+options[i][1]+"</button>");
       $("#ans3").removeClass('d-none');
-      $("#ans3").html("<button type='button' class='btn btn-secondary'id='ans3'>"+"Chennai"+"</button>");
+      $("#ans3").html("<button type='button' class='btn btn-secondary'id='ans3'value='" + options[i][2] + "'>"+options[i][2]+"</button>");
       $("#ans4").removeClass('d-none');
-      $("#ans4").html("<button type='button' class='btn btn-secondary'id='ans4'>"+"Mumbai"+"</button>");
+      $("#ans4").html("<button type='button' class='btn btn-secondary'id='ans4'value='" + options[i][3] + "'>"+options[i][3]+"</button>");
 
-      $("#ans1").on("click",function(){
+      $("#ans1").on("click","button[id=ans1]",function(){
           var answer1 = $(this).val();
         //   console.log($("#ans1").text(value));
         console.log(answer1);
+        $("#ans1").unbind('click'); //Resets button
         evaluate(answer1);
 
       });
 
-      $("#ans2").on("click",function(){
+      $("#ans2").on("click","button[id=ans2]",function(){
         var answer2 = $(this).val();
       //   console.log($("#ans1").text(value));
+      $("#ans2").unbind('click'); //Resets button
       console.log(answer2);
       evaluate(answer2);
 
     });
 
-    $("#ans3").on("click",function(){
+    $("#ans3").on("click","button[id=ans3]",function(){
         var answer3 = $(this).val();
       //   console.log($("#ans1").text(value));
       console.log(answer3);
+      $("#ans3").unbind('click'); //Resets button
       evaluate(answer3);
 
     });
 
-    $("#ans4").on("click",function(){
+    $("#ans4").on("click","button[id=ans4]",function(){
         var answer4 = $(this).val();
       //   console.log($("#ans1").text(value));
       console.log(answer4);
+      $("#ans4").unbind('click'); //Resets button
       evaluate(answer4);
 
     });
         
     }
+}
     // Function that evaluates user's answer
     function evaluate(answer){
-        if(answer == ansBank[0]){
+        $("#answer").show();
+        if(answer == ansBank[i]){
+            console.log("Answer inside equal if loop : "+answer);
+            console.log("Inside equal if loop: "+ansBank[i]+"value of i is : "+i);
+            // $(answer).addClass("active");
             $("#answer").html("<p>Yay! Correct answer</p>");
+            console.log("inside equal if loop: "+answer);
             askQuestionsHide();
             stopTimer();
+            if(i!=1) i++;
+            setTimeout(askQuestions,5000);
+            setTimeout(run,5000);
         }
-        if(answer != ansBank[0]){
+        else if(answer != ansBank[i]){
             $("#answer").html("<p>Oops! Wrong answer</p>");
-            $("#answer").append("<p>Correct answer is " +ansBank[0]+"</p>");
+            console.log("Prints i inside second if "+i);
+            $("#answer").append("<p>Correct answer is " +ansBank[i]+"</p>");
+            console.log("Prints i inside second if "+i);
             askQuestionsHide();
             stopTimer();
+            i++;
+            setTimeout(askQuestions,5000);
+            setTimeout(run,5000);
+
+        }
+        else{
+        // i++;
         }
 
     }
