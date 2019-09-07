@@ -132,8 +132,8 @@ $(document).ready(function(){
       $("#ans4").removeClass('d-none');
       $("#ans4").html("<button type='button' class='btn btn-secondary'id='ans4'value='" + options[i][3] + "'>"+options[i][3]+"</button>");
 
-      $("#ans1").on("click","button[id=ans1]",function(){
-        $("#ans1").unbind('click'); //Resets button
+      $("#ans1").unbind("click").on("click", "button[id=ans1]",function (){
+        // $("#ans1").unbind('click'); //Resets button
           var answer1 = $(this).val();
         //   console.log($("#ans1").text(value));
         console.log(answer1);
@@ -141,7 +141,7 @@ $(document).ready(function(){
 
       });
 
-      $("#ans2").on("click","button[id=ans2]",function(){
+      $("#ans2").unbind("click").on("click", "button[id=ans2]",function (){
         $("#ans2").unbind('click'); //Resets button
         var answer2 = $(this).val();
       //   console.log($("#ans1").text(value));
@@ -150,8 +150,11 @@ $(document).ready(function(){
 
     });
 
-    $("#ans3").on("click","button[id=ans3]",function(){
-        $("#ans3").unbind('click'); //Resets button
+    // $("#ans3").on("click","button[id=ans3]",function()
+    // $('#ans3').unbind('click').click(function()
+    $("#ans3").unbind("click").on("click", "button[id=ans3]",function ()
+    {
+        // $("#ans3").unbind('click'); //Resets button
         var answer3 = $(this).val();
       //   console.log($("#ans1").text(value));
       console.log(answer3);
@@ -160,7 +163,7 @@ $(document).ready(function(){
 
     });
 
-    $("#ans4").on("click","button[id=ans4]",function(){
+    $("#ans4").unbind("click").on("click", "button[id=ans4]",function (){
         $("#ans4").unbind('click'); //Resets button
         var answer4 = $(this).val();
       //   console.log($("#ans1").text(value));
@@ -278,6 +281,7 @@ $(document).ready(function(){
     // Function to show button that allows user to restart the game
     function restartGame(){
         $("#restart").removeClass('d-none');
+        $("#restart").html("Restart");
         $("#restart").on("click",function(){
 
             startGame();
