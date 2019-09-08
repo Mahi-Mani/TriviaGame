@@ -5,8 +5,8 @@ var questions;
 var quesBank = ["Which city is known as Pink City","Which country is called as The Land of rising Sun","The Land of midnight Sun"];
 var ansBank = ["Jaipur","Japan","Norway"];
 var options = [["Jaipur","Kashmir","Chennai","Mumbai"],
-                ["Japan","Norway","India","Australia"],
-                ["Norway","Canada","Indonesia","Russia"]];
+                ["Norway","Japan","India","Australia"],
+                ["Indonesia","Canada","Norway","Russia"]];
 var value;
 var i;
 var j;
@@ -85,8 +85,12 @@ $(document).ready(function(){
         $("#timeRemaining").show();
         $("#timeUp").show();
         $("#timeRemaining").html("<p>"+"Time Remaining : 0"+"</p>");
-        $("#timeUp").append("<p>Time Up!</p>");
+        $("#timeUp").html("<p>Time Up!</p>");
+        wrongAnswers = wrongAnswers + 1;
+        console.log("Inside Time UP!");
         showCorrectAnswer();
+        i++;
+        // $("#timeUp").hide();
         ifAllQuestionsAsked();
 
         // if((i+1) <= quesBank.length)
@@ -113,6 +117,8 @@ $(document).ready(function(){
     function askQuestions(){
         // $("#questions").html("<p>What is Pink City</p>");
         // i=0;
+        // $("#answer").hide();
+        $("#answer").empty();
         $("#timeUp").hide();
         $("#answer").hide();
         $("#quesBtn").show();
@@ -142,7 +148,7 @@ $(document).ready(function(){
       });
 
       $("#ans2").unbind("click").on("click", "button[id=ans2]",function (){
-        $("#ans2").unbind('click'); //Resets button
+        // $("#ans2").unbind('click'); //Resets button
         var answer2 = $(this).val();
       //   console.log($("#ans1").text(value));
       console.log(answer2);
@@ -164,7 +170,7 @@ $(document).ready(function(){
     });
 
     $("#ans4").unbind("click").on("click", "button[id=ans4]",function (){
-        $("#ans4").unbind('click'); //Resets button
+        // $("#ans4").unbind('click'); //Resets button
         var answer4 = $(this).val();
       //   console.log($("#ans1").text(value));
       console.log(answer4);
@@ -206,7 +212,8 @@ $(document).ready(function(){
             console.log("Prints i inside second if "+i);
             // $("#answer").append("<p>Correct answer is " +ansBank[i]+"</p>");
             showCorrectAnswer();
-            console.log("Prints i inside second if "+i);
+            // $("#answer").empty();
+            // console.log("Prints i inside second if "+i);
             askQuestionsHide();
             stopTimer();
             // calcWrongAnswers();
@@ -226,24 +233,44 @@ $(document).ready(function(){
 
         }
         else{
-        // i++;
-        }
+            // i++;
+            }
+        // if((answer != ansBank[i]) && ((i+1) === quesBank.length)){
+        //     showCorrectAnswer(); //Shows correct answer if last question is answered incorrectly
+        // }
+
 
     }
     function ifAllQuestionsAsked(){
+        // $("#timeUp").show();
+        // $("#corrAns").hide();
+        
         if((i+1) <= quesBank.length)
         {
         setTimeout(askQuestions,5000);
         setTimeout(run,5000);
+        // evaluateLastQuestion();
         }
+        // else if((answer != ansBank[i]) && ((i+1) > quesBank.length)){
+        //     showCorrectAnswer(); //Shows correct answer if last question is answered incorrectly
+        // }
         else{
             console.log("Game over");
-            gameOver();
+            // gameOver();
+            setTimeout(gameOver,5000);
         }
     }
+    // function evaluateLastQuestion(){
+    //     if((answer != ansBank[i]) && ((i+1) == quesBank.length)){
+    //         showCorrectAnswer(); //Shows correct answer if last question is answered incorrectly
+    //         console.log("Check if inside else statement and value of I is : "+i);
+    //     }
+    // }
     function showCorrectAnswer(){
         $("#answer").show();
+        console.log("Show correct answer"+ansBank[i]);
         $("#answer").append("<p>Correct answer is " +ansBank[i]+"</p>");
+        
     }
     // Function that calculates score
     function scoreCard(){
