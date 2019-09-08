@@ -13,6 +13,7 @@ var j;
 var score;
 var correctAnswers;
 var wrongAnswers;
+var unanswered;
 
 $(document).ready(function(){
     // Game is started when Start button is pressed
@@ -27,25 +28,34 @@ $(document).ready(function(){
         score = 0;
         correctAnswers = 0;
         wrongAnswers = 0;
+        unanswered = 0;
         hideVariables();
-
-
     }
 
     function hideVariables(){
         $("#score").hide();
         $("#corrAns").hide();
         $("#wrongAns").hide();
+        $("#gameOverBoot").addClass('d-none');
         $("#gameOver").hide();
         $("#restart").hide();
+        $("#restartBtn").hide();
+        $("#unAns").hide();
     }
 
     function showVariables(){
+        $("#score").removeClass('d-none');
         $("#score").show();
+        $("#corrAns").removeClass('d-none');
         $("#corrAns").show();
+        $("#wrongAns").removeClass('d-none');
         $("#wrongAns").show();
+        $("#gameOverBoot").removeClass('d-none');
         $("#gameOver").show();
         $("#restart").show();
+        $("#restartBtn").show();
+        $("#unAns").removeClass('d-none');
+        $("#unAns").show();
     }
 
     function startGame(){
@@ -53,26 +63,22 @@ $(document).ready(function(){
         hideVariables();
         $("#startBtn").hide();
         $("#getSetGo").hide();
+        $("#timedGame").hide();
         $("#cardBody1").hide();
         $("#cardBody2").hide();
-        // for(i=0 ;i<quesBank.length;i++){
         setTimeout(askQuestions,1000);
         run();
-        // }
-        // questions = setInterval(askQuestions, 10000);
-        // run();
-        
     }
     // Calls Decrement function
     function run() { 
         clearInterval(intervalId); 
         timeRemaining = 10;
         intervalId = setInterval(decrement, 1000);
-        // questions = setInterval(askQuestions, 30000);
     }
     // Displays the remaining time
     function decrement(){
         timeRemaining = timeRemaining - 1;
+        $("#timeRemaining").removeClass('d-none');
         $("#timeRemaining").html("<p>"+"Time Remaining : "+timeRemaining+"</p>");
         if(timeRemaining == 0){
             timeUp(timeRemaining);
@@ -82,42 +88,30 @@ $(document).ready(function(){
     }
     // Function that displays timeUP when remaining time expires!
     function timeUp(timeRemaining){
+        $("#timeRemaining").removeClass('d-none');
         $("#timeRemaining").show();
+        $("#timeUp").removeClass('d-none');
         $("#timeUp").show();
         $("#timeRemaining").html("<p>"+"Time Remaining : 0"+"</p>");
         $("#timeUp").html("<p>Time Up!</p>");
-        wrongAnswers = wrongAnswers + 1;
+        unanswered = unanswered + 1;
         console.log("Inside Time UP!");
         showCorrectAnswer();
         i++;
-        // $("#timeUp").hide();
         ifAllQuestionsAsked();
-
-        // if((i+1) <= quesBank.length)
-        // {
-        // setTimeout(askQuestions,5000);
-        // setTimeout(run,5000);
-        // }
-        // else{
-        //     console.log("Game over");
-        //     gameOver();
-        // }
-
         clearInterval(intervalId);
         askQuestionsHide();
     }
-
+    // Function to hide time remaining and timeUp variables
     function allHide(){
         $("#timeRemaining").hide();
         $("#timeUp").hide();
         $("#answer").hide();
+        // $("#gameOverBoot").addClass('d-none');
     }
 
     // Function that displays questions to user
     function askQuestions(){
-        // $("#questions").html("<p>What is Pink City</p>");
-        // i=0;
-        // $("#answer").hide();
         $("#answer").empty();
         $("#timeUp").hide();
         $("#answer").hide();
@@ -183,6 +177,7 @@ $(document).ready(function(){
 }
     // Function that evaluates user's answer
     function evaluate(answer){
+        $("#answer").removeClass('d-none');
         $("#answer").show();
         if(answer == ansBank[i]){
             console.log("Answer inside equal if loop : "+answer);
@@ -198,14 +193,6 @@ $(document).ready(function(){
             i++;
             //Breaks the loop if all questions in array were asked
             ifAllQuestionsAsked();
-        //     if((i+1) <= quesBank.length){
-        //     setTimeout(askQuestions,5000);
-        //     setTimeout(run,5000);
-        // }
-        //     else{
-        //     console.log("Game over");
-        //     gameOver();
-        //     }
         }
         else if(answer != ansBank[i]){
             $("#answer").html("<p>Oops! Wrong answer</p>");
@@ -221,52 +208,28 @@ $(document).ready(function(){
             i++;
             //Breaks the loop if all questions in array were asked
             ifAllQuestionsAsked();
-            // if((i+1) <= quesBank.length)
-            // {
-            // setTimeout(askQuestions,5000);
-            // setTimeout(run,5000);
-            // }
-            // else{
-            //     console.log("Game over");
-            //     gameOver();
-            // }
-
         }
         else{
             // i++;
             }
-        // if((answer != ansBank[i]) && ((i+1) === quesBank.length)){
-        //     showCorrectAnswer(); //Shows correct answer if last question is answered incorrectly
-        // }
-
-
     }
-    function ifAllQuestionsAsked(){
-        // $("#timeUp").show();
-        // $("#corrAns").hide();
-        
+    function ifAllQuestionsAsked(){ 
         if((i+1) <= quesBank.length)
         {
         setTimeout(askQuestions,5000);
         setTimeout(run,5000);
         // evaluateLastQuestion();
         }
-        // else if((answer != ansBank[i]) && ((i+1) > quesBank.length)){
-        //     showCorrectAnswer(); //Shows correct answer if last question is answered incorrectly
-        // }
+
         else{
             console.log("Game over");
             // gameOver();
             setTimeout(gameOver,5000);
         }
     }
-    // function evaluateLastQuestion(){
-    //     if((answer != ansBank[i]) && ((i+1) == quesBank.length)){
-    //         showCorrectAnswer(); //Shows correct answer if last question is answered incorrectly
-    //         console.log("Check if inside else statement and value of I is : "+i);
-    //     }
-    // }
+    // Function that shows correct answer when answered incorrectly
     function showCorrectAnswer(){
+        $("#answer").removeClass('d-none');
         $("#answer").show();
         console.log("Show correct answer"+ansBank[i]);
         $("#answer").append("<p>Correct answer is " +ansBank[i]+"</p>");
@@ -285,6 +248,11 @@ $(document).ready(function(){
      $("#wrongAns").html("Number of wrong answers : "+wrongAnswers);
 
  }
+ 
+ function calcUnanswered(){
+     showVariables();
+     $("#unAns").html("Number of questions unanswered : "+unanswered);
+ }
     // Code that hides questions when time is up and answer is evaluated!
     function askQuestionsHide(){
         $("#quesBtn").hide();
@@ -299,19 +267,23 @@ $(document).ready(function(){
     }
     // Function to show score card stuffs to user
     function gameOver(){
+        $("#gameOverBoot").removeClass('d-none');
         $("#gameOver").html("Game Over !");
         scoreCard();
         calcWrongAnswers();
+        calcUnanswered();
         allHide();
         restartGame();
     }
     // Function to show button that allows user to restart the game
     function restartGame(){
         $("#restart").removeClass('d-none');
+        $("#restartBtn").removeClass('d-none');
         $("#restart").html("Restart");
         $("#restart").on("click",function(){
-
-            startGame();
+        $("#timeRemaining").removeClass('d-none');
+        $("#timeRemaining").show();
+        startGame();
         });
 
     }

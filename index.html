@@ -21,7 +21,7 @@
                   </div>
         </header>
 
-        <div id = "container">
+        <!-- <div id = "container">
         <p id="timeRemaining"></p>
         <p id="timeUp"></p>
         <p id="questions"></p>
@@ -29,7 +29,54 @@
         <p id="score"></p>
         <p id="corrAns"></p>
         <p id="wrongAns"></p>
-        <h2 id="gameOver"></h2>
+        <p id="unAns"></p> -->
+        <!-- <h2 id="gameOver"></h2> -->
+
+        <div class="card text-center mx-auto" style="width: 18rem;"id="contentBoot">
+            <div class="card-body">
+              <h3 id="timedGame">It's a Timed Game</h3>
+              <p class="card-title d-none"id="timeRemaining"></p>
+              <p class="card-title d-none" id="timeUp"></p>
+              <p class="card-title d-none"id="questions"></p>
+              <!-- <p class="card-title d-none"id="questions"></p> -->
+              <p class="card-title d-none"id="answer"></p>
+              <p class="card-title d-none"id="score"></p>
+              <p class="card-title d-none"id="corrAns"></p>
+              <p class="card-title d-none"id="wrongAns"></p>
+              <p class="card-title d-none"id="unAns"></p>
+
+            </div>
+          </div>
+          <br><br><br><br><br>
+
+
+
+
+        <div class="alert alert-danger text-center d-none" role="alert"id="gameOverBoot">
+            <h2 id="gameOver"></h2>
+          </div>
+
+
+        
+
+<!-- <div class="accordion d-none" id="answer">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+            <h5 class="card-title">
+             Correct answer is 
+            </h5>
+        </h2>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div> -->
+
+
 
         <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action active d-none"id="quesBtn">
@@ -44,7 +91,7 @@
         <!-- <input type="button" value="Start"id="startBtn">  -->
         <!-- <button type="button" class="btn btn-primary"id="startBtn">Start</button> -->
 
-        <div class="card">
+        <!-- <div class="card">
                 <div class="card-header h3"id="getSetGo">
                   Get Set Go!
                 </div>
@@ -54,10 +101,39 @@
                   <a href="#" class="btn btn-primary"id="startBtn">Start</a>
                 </div>
               </div>
-        </div>
+        </div> -->
+
+        <div class="card text-center"id="getSetGo">
+            <div class="card-header">
+              Get Set Go!
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"id="cardBody1">You will be given with set of questions</h5>
+              <p class="card-text"id="cardBody2">Gear up and try to answer them all right! </p>
+              <a href="#" class="btn btn-primary"id="startBtn">Start</a>
+            </div>
+            <div class="card-footer text-muted">
+              Good Luck !
+            </div>
+          </div>
 
         
-        <button type="button" class="btn btn-secondary d-none"id="restart">Restart</button>
+        <!-- <button type="button" class="btn btn-secondary d-none"id="restart">Restart</button> -->
+
+        <div class="card text-center d-none"id="restartBtn">
+            <!-- <div class="card-header">
+              Get Set Go!
+            </div> -->
+            <div class="card-body">
+              <h5 class="card-title"id="cardBody3">Replay the game by pressing restart button</h5>
+              <!-- <p class="card-text"id="cardBody2">Gear up and try to answer them all right! </p> -->
+              <a href="#" class="btn btn-primary d-none"id="restart">Restart</a>
+            </div>
+            <div class="card-footer text-muted">
+              Good Luck !
+            </div>
+          </div>
+
 
         <script src="assets/javascript/app.js"></script> 
     </body>
