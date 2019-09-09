@@ -11,27 +11,28 @@
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <header>
+            <div class="bodyContainer">
+            <header>
             <!-- <h1>Totally Trivia Game</h1> -->
-            <div class="jumbotron jumbotron-fluid">
+              <!-- First Row -->
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+            <div class="jumbotron jumbotron-fluid"id="jumbotron">
                     <div class="container">
                       <h1 class="display-4">Totally Trivia Game</h1>
                       <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
                     </div>
                   </div>
+                </div>
+                <div class="col-md-2"></div>
+                </div>
         </header>
 
-        <!-- <div id = "container">
-        <p id="timeRemaining"></p>
-        <p id="timeUp"></p>
-        <p id="questions"></p>
-        <p id="answer"></p>
-        <p id="score"></p>
-        <p id="corrAns"></p>
-        <p id="wrongAns"></p>
-        <p id="unAns"></p> -->
-        <!-- <h2 id="gameOver"></h2> -->
-
+        <!-- Second Row -->
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
         <div class="card text-center mx-auto" style="width: 18rem;"id="contentBoot">
             <div class="card-body">
               <h3 id="timedGame">It's a Timed Game</h3>
@@ -47,62 +48,44 @@
 
             </div>
           </div>
-          <br><br><br><br><br>
+        </div>
+        <div class="col-md-2"></div>
+        </div>
+        <br><br><br>
 
-
-
-
-        <div class="alert alert-danger text-center d-none" role="alert"id="gameOverBoot">
+        <!-- Third row -->
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+        <div class="alert text-center d-none" role="alert"id="gameOverBoot">
             <h2 id="gameOver"></h2>
           </div>
-
-
-        
-
-<!-- <div class="accordion d-none" id="answer">
-    <div class="card">
-      <div class="card-header" id="headingOne">
-        <h2 class="mb-0">
-            <h5 class="card-title">
-             Correct answer is 
-            </h5>
-        </h2>
-      </div>
-  
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
         </div>
-      </div>
-    </div> -->
+        <div class="col-md-2"></div>
+        </div>
 
-
-
+        <!-- Fourth row -->
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
         <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action active d-none"id="quesBtn">
-                </button>
-                <button type="button" class="btn btn-secondary d-none"id="ans1"></button>
-                <button type="button" class="btn btn-secondary d-none"id="ans2"></button>
-                <button type="button" class="btn btn-secondary d-none"id="ans3"></button>
-                <button type="button" class="btn btn-secondary d-none"id="ans4"></button>
+                <!-- <button type="button" class="list-group-item list-group-item-action active d-none"id="quesBtn">
+                </button> -->
+                <div class="alert alert-primary d-none" role="alert"id="quesBtn">
+                  </div>
+                <button type="button" class="btn d-none"id="ans1"></button>
+                <button type="button" class="btn d-none"id="ans2"></button>
+                <button type="button" class="btn d-none"id="ans3"></button>
+                <button type="button" class="btn d-none"id="ans4"></button>
               </div>
+            </div>
+            <div class="col-md-2"></div>
+            </div>
 
-
-        <!-- <input type="button" value="Start"id="startBtn">  -->
-        <!-- <button type="button" class="btn btn-primary"id="startBtn">Start</button> -->
-
-        <!-- <div class="card">
-                <div class="card-header h3"id="getSetGo">
-                  Get Set Go!
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title"id="cardBody1">You will be given with set of questions</h5>
-                  <h5 class="card-text"id="cardBody2">Gear up and try to answer them all right! Good Luck!</h5>
-                  <a href="#" class="btn btn-primary"id="startBtn">Start</a>
-                </div>
-              </div>
-        </div> -->
-
+        <!-- Fifth Row -->
+        <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
         <div class="card text-center"id="getSetGo">
             <div class="card-header">
               Get Set Go!
@@ -110,31 +93,35 @@
             <div class="card-body">
               <h5 class="card-title"id="cardBody1">You will be given with set of questions</h5>
               <p class="card-text"id="cardBody2">Gear up and try to answer them all right! </p>
-              <a href="#" class="btn btn-primary"id="startBtn">Start</a>
+              <a href="#" class="btn btn-primary"id="startBtn">START</a>
             </div>
             <div class="card-footer text-muted">
               Good Luck !
             </div>
-          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
 
-        
-        <!-- <button type="button" class="btn btn-secondary d-none"id="restart">Restart</button> -->
-
+      <!-- Sixth row -->
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
         <div class="card text-center d-none"id="restartBtn">
-            <!-- <div class="card-header">
-              Get Set Go!
-            </div> -->
             <div class="card-body">
               <h5 class="card-title"id="cardBody3">Replay the game by pressing restart button</h5>
               <!-- <p class="card-text"id="cardBody2">Gear up and try to answer them all right! </p> -->
-              <a href="#" class="btn btn-primary d-none"id="restart">Restart</a>
+              <a href="#" class="btn btn-primary d-none"id="restart">RESTART</a>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted"id="footer">
               Good Luck !
             </div>
           </div>
-
-
+          <div class="col-md-2"></div>
+        </div>
+        </div>
+      </div>
         <script src="assets/javascript/app.js"></script> 
+      
     </body>
 </html>

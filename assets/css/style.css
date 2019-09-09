@@ -1,9 +1,49 @@
 h1,p,input{
     text-align: center;
 }
-.container{
+.jumbotron,
+#quesBtn{
     align-items: center;
+    border:solid;
+    margin-top: 1%;
+    
+}
+#quesBtn{
+    background-color: blue;
+}
+#jumbotron,
+#getSetGo, 
+#ans1,#ans2,#ans3,#ans4,
+.card-body,
+.card-header,
+.card-footer,
+#footer,
+#gameOverBoot{
+    background-color: #FFFF66;
+}
+#ans1,#ans2,#ans3,#ans4{
+    color:black;
+    /* border:solid; */
 }
 /* .active {
     background-color: green !important;
   } */
+body{
+    align-content: center;
+    overflow-x: hidden;
+    background-image: url("../images/bg.jpg");
+    background-size: 1600px 1600px;
+}
+#question{
+    text-align: center;
+}
+.card-header,
+.card-body,
+.card-footer,
+#gameOverBoot {
+    /* width:100%; */
+    border:solid;
+}
+/* .card-footer{
+    margin-bottom:1%;
+} */
